@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DB Decoupler</title>
+  </head>
+  <body>
+    <header><strong>Decoupler: The Automated Domain Decoupler</strong></header>
+    <br />
+    <header><strong>Problem and Impact</strong></header>
+    <br />
+    <section>
+      A 12-billion dollar organization must evolve the fundamental structure of
+      its data. Moreover, it must do so without interfering with the software
+      systems that currently consume it. It is a fate deciding problem because
+      the business could fail if doesn't suceed, and there are many examples
+      that show why this is true. For instance, the catalog size cannot grow
+      without an exponential increase in computational complexity. This is bad
+      because without growing the catalog, the company cannot compete
+      effectively, which allows other companies to win market share that would
+      otherwise belong to the company. So, growth needs to be unlocked. Another
+      example is the slowing of developer velocity, which has grinded to a near
+      halt from the testing of complex dependencies required to ship even the
+      smallest feature. Slow velocity means inefficent operations, aka wasted
+      money, and no cash flow means borrowing money or going out of business.
+      There are more examples, but these two should suffice to explain the
+      predicament, because they are very impactful.
+    </section>
+    <br />
+    <header><strong>Root Cause</strong></header>
+    <br />
+    <section>
+      Access to the data's implementation details is the main blocker. This
+      manifests as the use of direct SQL rather than APIS, which means that
+      consumers have very close relationship to the data's technological
+      configuration. That is, they know more about the data than just what it
+      literally is. That is, they know about the tables, what columns, foreign
+      key relationships, what databases, hardware details etc. It would be like
+      knowing Google search's internal querying logic, which is very complex,
+      and also not necessary to perform a simple query; for most, the simple
+      Google Search website is sufficient. Now, with a small company, it is ok
+      to be close to the implementation details, but at scale, there are
+      problems, as we shall see.
+    </section>
+    <br />
+    <section>
+      Because they they have access to implementation details, the quantity and
+      diversity of consumers makes it challenging to evolve the data structure.
+      The reason is this: say, for instance, a table had to be moved to another
+      database. Then, all the consumers would have to know about that, and that
+      would be major problem because they would have to reconfigure their query
+      to access the new table. The result is that a usually simple task is
+      impossible to achieve because consumers have to migrate. That is, they
+      depend on the current implementation to access the data, so it is messy
+      and a lot of work to have all consumers rewrite their code to accomodate
+      the data changes. Something has to be done about this, because if the
+      refactoring doesn't happen, the company will lose out on the opportunity
+      to scale the operation, and in the worse case, they cannot support the
+      current operation.
+    </section>
+    <br />
+    <section>
+      The exact technical details that create the need for restructuring are
+      beyond this paper's scope. However, a simple example will illuminate them.
+      Even the simple existence of multiple sources of truth could necessitate
+      refactoring. In fact, at scale this a very signifant problem. For
+      developers in particular, the problem is also real when they look at the
+      software systems and see how much testing and tech debt is in the
+      codebases. Start, for example, with the preponderance of 1000-line
+      classes. That alone is enough to illustrate the problem, because classes
+      of that size mean really only one thing: coupling to the implementation
+      details. In fact, the need for data refactoring is very similar to the
+      need for general refactoring in this way: that is, the size of a single
+      entity causing too much coupling, but again, it is not the goal to
+      elaborate on all the examples, because anyone in the thick of data
+      restructuring knows the problem is real, nor will they feel a dirth of
+      evidence.
+    </section>
+    <br />
+    <header><strong>Strategy</strong></header>
+    <br />
+    <section>
+      The execution strategy is also clear, which is to hide the implementation
+      details so the consumers don't depend on them anymore. Technically, this
+      means creating new interfaces, migrating clients, then refactoring behind
+      the interfaces. This leads to a great simplification of the software
+      system by decoupling the data from how it is stored. Once the data is
+      behind interfaces, the data can evolve independently of one another but
+      retain the existing relationship. This is what every successfully scaled
+      company has done in order to grow, and the benefits of doing it are
+      discussed at great length by the people who implemented it. Therefore, we
+      know it works, and it also works because, in theory, the current data
+      interfaces aren't bad, they just need to be able to grow and develop
+      independently of one another, but also keep the existing functionality.
+      So, it is ok to keep them, and change them and grow them under the hood.
+      Intuitively, it makes sense, but is it really that simple? No.
+    </section>
+    <br />
+    <header><strong>Challenges</strong></header>
+    <br />
+    <section>
+      There are many challenges; one challenge is to make it easy for consumers
+      to migrate, otherwise there is no point of solving the original problem:
+      ease of using the data in new and imaginative ways. That means, consumers
+      should be able to continue as they were before the changes were made, so
+      no interuption to operations.
+    </section>
+    <br />
+    <section>
+      Another challenge is to refactor the data structure incrementally.
+      Strictly speaking, incremental wins are not a hard requirement, but it
+      should be, especially if some of the data needs to be refactored before
+      other parts. Additionally, it is good practice it think incrementally,
+      because stakeholders usually expect it, and it avoids the temptation of
+      waterfall. This last point is important: not doing waterfall, which
+      creates the risk of building a huge product, but then nobody uses it. It
+      comes from thinking that clients will adopt new platform no matter what,
+      but things do not work like that in practice.
+    </section>
+    <br />
+    <section>
+      The types of refactoring pose a challenge. They divide roughly into two
+      types. The first is modifying columns, new data, validations etc. These
+      examples are real; migrating tables to new databases is exactly what needs
+      to happen, and even more than that has to be done. Additionally, tables
+      need to be rewritten, refactored, and moved not only to new databases but
+      to entirely different kinds of databases. This is very important for
+      saving money on software costs. However, there also the important second
+      kind, which is the reworking of the business domains themselves. It is a
+      conceptual refactoring, where new business entities emerge from the
+      growing requirements of the business. Of course, both types of refactoring
+      support and inform the other, but they are also distinct. For instance,
+      migrating a database table is different from concieving on a new business
+      domain, for instance, a new Catalog or Marketing concept.
+    </section>
+    <br />
+    <header><strong>Mistakes In Implementation</strong></header>
+    <br />
+    <section>
+      The first mistake is violating the first consideration, that is, deciding
+      that consumers have to migrate to the new interfaces by refactoring their
+      own code, with their own engineering effort. This mistake is easy to make
+      because the company doesn't "eat their own dogfood" and therefore think it
+      is easy for clients to migrate. However this is rarely the case, and this
+      decision costs the company a great deal of time because consumers have
+      many things to do instead of letting engineering teams tell them to stop
+      all their work and migrate to the new interface. It basically defeats the
+      whole point of trying to solve the orginal problem, which was to stop
+      teams from having to migrate their interface when the data structure
+      changes. So in the end, there is a massive risk, which is that consumers
+      won't migrate.
+    </section>
+    <br />
+    <section>
+      The second mistake is violating the second consideration of incremental
+      wins. This is because the company decides to build a new platform as
+      complex as the previous one, and before adoption. That is a lot of work:
+      to build it, to figure out what to build, because they have to find out
+      the intended consumption patterns, and the new business domains. This is
+      very hard to do because the future is unpredictable, and could change. If
+      the future changes, the work would have been wasted. Hopefully, consumers
+      adopt, but it is not know as to when. With that uncertainty, the whole
+      point of the project in is question: the important work of refactoring the
+      data structure. The answer is that it won't get started until the new
+      platform is built, then adopted, which will take a very long time. In the
+      meantime, there will still be the legacy data structures in place, so no
+      progress on the original problem.
+    </section>
+    <br />
+    <section>
+      A third mistake is asking the data owners to perform both types of data
+      restructuring. This has a huge impact because teams get little done trying
+      to do too much. This might not seem like a mistake, because the data
+      owners know a lot, and they know how their data should look in the future,
+      but they have an incomplete picture. There are also data consumers who
+      have their ideas of new domains, what shape they want the data, and how they
+      want to integrate it, etc. Therefore, the domain-specific refactoring
+      should rest with the consumer as much as possible because they know what they want
+      better than anyone else. So, if the data owners try to do the work of the
+      consumers, or vice versa, then teams will spend too much time asking other
+      teams what it is that they want, which leads to a lot of time wasted on
+      discussions and planning instead of building.
+    </section>
+    <br />
+    <section>
+      These mistakes are symptoms of a greater problem: the focus shifts from
+      the original problem to the means of solving it, which is bad because the
+      original problem still stands: refactor the data structure. Probably, a
+      few consumers will still adopt, but it is clear what is happening. The
+      company is focused on building a new platform, in a waterfall way, for an
+      imagined, pre-planned, overarching future use-case which may or may not
+      exist, and then hoping everyone will adopt it. If all that works, then
+      finally the company can focus on rewriting the data structures under the
+      hood. However, it is too far away, and by then it may be too late.
+    </section>
+    <br />
+    <header><strong>Solution</strong></header>
+    <br />
+    <section>
+      There is a way to avoid these mistakes. As a reminder, the goal is to
+      enable the data structure to be refactored. This means easy adoption by
+      consumers, incremental delivery, and have the right teams do the right
+      work. That solution is to decouple the tasks of refactoring the
+      implementation details from the task of refactoring the data domains.
+    </section>
+    <br />
+    <header><strong>Implementation:</strong></header>
+    <section>
+      <ol>
+        <li>
+          This is the starting point (a db monolith). Clients are coupled to the
+          implementation details of the data.
+          <img src="./Screenshot 2023-09-07 at 11.10.40 AM.png" />
+        </li>
+        <li>
+          Put each table behind a microservice. This avoids the second mistake
+          by making the new interfaces available immediately for adoption,
+          without too much work, so restructuring can start happinng
+          incrementally.
+          <img src="./Screenshot 2023-09-07 at 11.10.44 AM.png" />
+        </li>
+        <li>
+          Create new domains and migrate data as needed. This avoids the third
+          mistake by giving teams their correct responsibility: letting data
+          owners address implementation details, and domain owners take care of
+          the domain restructuring.
+          <img src="./Screenshot 2023-09-07 at 11.10.49 AM.png" />
+        </li>
+        <li>
+          Now, the first mistake is still possible: how to migrate existing
+          consumers to the new interfaces easily. The solution is to do it
+          behind the scenes. Inject the interfaces into the old system in a way
+          that is hidden from the consumers. Then, lock the old interface from
+          new features and then require any new work to use the new interfaces.
+          There are many ways to do this, even at the db level. In a SQL world,
+          the strategy would map under the hood every SQL query to an interface,
+          and then lock the SQL queries, so no new ones could be made. Then, any
+          new feature would require adoption of the new data structures because
+          the old queries are locked from being changed. This strategy will work
+          because it is programmatic rather than negotiative. That is, no work
+          needs to be done to convince teams to adopt or not, just set the rules
+          and enforce them programmatically, and it will happen.
+          <img src="./Screenshot 2023-09-17 at 11.16.39 AM.png" />
+        </li>
+      </ol>
+    </section>
+    <br />
+    <header><strong>Wins:</strong></header>
+    <section>
+      <ol>
+        <li>Interfaces get built.</li>
+        <li>Consumers get migrated.</li>
+        <li>
+          Two problems get solved for the price of one because new domains can
+          be composed at the same time that data is refactored.
+        </li>
+      </ol>
+    </section>
+    <br />
+    <header><strong>Risks and Mitigations</strong></header>
+    <section>
+      <ol>
+        <li>
+          Performance:
+          <ul>
+            <li>
+              The decoupled architecture poses two risks: the removal of the SQL
+              join as an architectural lynchpin, which could be undesirable
+              because the relational model dissolves, and possible performance
+              implications because joins are very efficient. However, this this
+              ok because the decoupled system opens more doors than it closes,
+              such as caching, templating, and other forms of creating data
+              relationships.
+            </li>
+          </ul>
+        </li>
+        <li>
+          Complexity:
+          <ul>
+            <li>
+              The decoupled architecture also introduces complexity elsewhere,
+              as it will consist of many micro-services, but that is ok because
+              they can be observed and monitored.
+            </li>
+          </ul>
+        </li>
+        <li>
+          Cost:
+          <ul>
+            <li>
+              There is a need to manage cost: the cost of running the decoupled
+              architecture needs to be cheaper than running the database
+              monolith, but that will happen because the system will be on
+              average the same size as database monolith but only need to scale
+              some of the components, which net cheaper than scaling the whole
+              monolith. Additionally, the ROI on decoupling would in theory
+              justify any costs.
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+    <br />
+    <header><strong>FAQ</strong></header>
+    <section>
+      <ol>
+        <li>
+          What is the root cause of the need to decouple?
+          <ul>
+            <li>Not refactoring.</li>
+          </ul>
+        </li>
+        <li>
+          Definition of Decoupling?
+          <ul>
+            <li>
+              Decoupling means that compontents can evolve independently of one
+              another while still maintaining the existing relationship.
+            </li>
+          </ul>
+        </li>
+        <li>
+          Why HTTP decoupling instead of DB decoupling?
+          <ul>
+            <li>
+              HTTP Services are are easy to call, much easier than DB
+              connections.
+            </li>
+          </ul>
+        </li>
+        <li>
+          Why REST services and not a Graphql endpoint and/or/with federation?
+          <ul>
+            <li>
+              We want to decouple, not re-couple. If you want federation, that
+              can be done later.
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+  </body>
+</html>
