@@ -1,8 +1,6 @@
-# decoupler-website
-
 Decoupling, Formally
 
-The purpose of this section is to demonstrate formally that decoupling is an optimization.
+The purpose of this section is to demonstrate formally that the Decoupling Problem is an optimization.
 
 
 The set B is a collection of Business Processes.
@@ -16,7 +14,9 @@ A set of Dependencies expresses the direct relationships of Business Processes t
 	D = { d ∈ B x B: b_1 R b_2 }, D ⊂ B x B, D ∈ P(B).
 
 
-A set of Mappings is a transformation of D into a set of sets of Domains, where there is more than one valid set of Domains, defined as:
+Given a maximum size of a Domain, A set of Mappings is a transformation of D into a set of sets of Domains, where there is more than one valid set of Domains, defined as:
+
+
 
 	h : B, D -> M, where
 
@@ -44,7 +44,7 @@ The set of all possible Total Couplings is a 1-to-1, but not onto, function of M
 
 Finding the Minimum Total Coupling gives the optimal Domain Structure. Think of the optimal Domain Structure as reducing the Dependencies between Domains. Thus, the Minimum Total Coupling is the infimum of the set of all possible Total Couplings:
 
-	Minimum Total Coupling = inf TC.
+	Minimum Total Coupling (MTC) = inf TC.
 
 
 
@@ -59,11 +59,5 @@ Finding the smallest change in D given an increase in B according to an order gi
 	Maximum Decoupling = inf dD / dB.
 
 
-Regarding the solution of B', note that many factors affect the membership of B' such as the time frame under consideration, so the optimization of D is highly subjective.
-
-
--------
-
-Show some pictures
-
+Regarding the solution of B', note that many factors affect the membership of B' such as the time frame under consideration, so the optimization of D can be highly subjective.
 
