@@ -63,4 +63,6 @@ In Summary, if the goal is to Decouple a system in the optimal way, find the Min
 
 Regarding the finding of `C`, note that many factors affect the membership of `B'`, so the process can be highly subjective.
 
+
+Example. Given max Domain size = 3: 
 ![img](https://github.com/Adrianjewell91/decoupler-website/blob/main/Screenshot%202024-02-10%20at%2010.01.19%20AM.png)
