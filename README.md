@@ -1,6 +1,6 @@
 Decoupling, Formally
 
-This article's purpose is to demonstrate that the Decoupling Problem is an optimization on a metric call the Minimun Total Coupling.
+This article's purpose is to demonstrate that the Decoupling Problem is an optimization of a value call the Minimun Total Coupling.
 
 
 The begin, let there be a set B, a collection of Business Processes.
