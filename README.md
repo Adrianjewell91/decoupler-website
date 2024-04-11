@@ -1,38 +1,40 @@
 Decoupling, Formally
 
-The purpose of this section is to demonstrate formally that the Decoupling Problem is an optimization.
+This article's purpose is to demonstrate that the Decoupling Problem is an optimization on a metric call the Minimun Total Coupling.
 
 
-The set B is a collection of Business Processes.
+The begin, let there be a set B, a collection of Business Processes.
 
 	B = { b_1, b_2, ... b_n }.
 
 
 
-A set of Dependencies expresses the direct relationships of Business Processes to one another. To generate it, map the Business Process to zero or more other Business Processes, defined by:
+Next, let there be a set D, collection of Dependencies, which express the direct relationships of Business Processes to one another. To generate it, map each Business Process to zero or more other Business Processes, defined by:
 
-	D = { d ∈ B x B: b_1 R b_2 }, D ⊂ B x B, D ∈ P(B).
+	D = { d ∈ B x B: b_1 R b_2 }. 
+ 
 
-
-Given a maximum size of a Domain, A set of Mappings is a transformation of D into a set of sets of Domains, where there is more than one valid set of Domains, defined as:
-
-
-
-	h : B, D -> M, where
-
-	M = { m ⊂ P(B) : U m == B and g( m ) = 1 }, where
-
-	g : P(B) -> { 0, 1 }, and 	g(m) = 1, if and only if:
-		for each Domain of m ⊂ B, there is a path from every b in the Domain to every other b' in the same Domain through the inter-Domain Dependencies only.
+Note that `D ⊂ B x B` and `D ⊂ P(B)`, which is siginificant insofar as showing that D is a subset of all possible combinations of two Business procceses, and also a subset of the complete set of all possible subsets (ie. the power set of B).
 
 
+The set `D` can be grouped into a set of Domains, denoted as a set called `M`, a collection of Domains. Given a maximum Domain `size`, the set M is constructed by transforming D. Note that there can be more than one valid set of Domains, (although we will not prove it here). This transformation is described by two functions `h` and `g`, and the set `M`:
 
-There exists a Total Coupling metric, defined as the summation of the dependencies between each Domain in a Mapping to the other Domains in the same Mapping, written as:
 
- 	j : M -> N, where j(m) = [Summation over { m x m : m ∈ M } ] q(m_domain_1, m_domain_2), where
+	let h : (B, D) -> M, where
 
-	q: (domain_1, domain_2) -> N, where
-		q(do_1, do_2) = [Summation over each b in do_1] b_n_do_1 U domain_2  if do_1 1= do_2 else return 0.
+	M = { m ∈ P(B) : U m == B and g( m ) = 1 }, and
+
+	let g : P(B) -> { 0, 1 }, and g(m) = 1 if
+		for each Domain of m ⊂ B, there is a path from every b in the Domain to every other b' in the same Domain through the inter-Domain Dependencies, only.
+
+The crucial function is `g`, which validates a subset of `D` to be a valid Domain.
+
+Now, there exists a value called the `Total Coupling metric`, which is the quantity of Dependencies that cross Domains. In other words, it sums the Dependencies that connect two Domains instead of connecting Dependencies within a Domain:
+
+ 	let j : M -> N, where j(M) = [Summation over { m x m : m ∈ M } ] q(m1, m2), where
+
+	q: (m1, m2) -> N, where
+		q(m1, m2) = [Summation over each b in m1] {b'} U m2  if m1 != m2 else return 0.
 
 
 
