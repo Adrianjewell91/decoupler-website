@@ -29,37 +29,37 @@ The set `D` can be grouped into a set of Domains, denoted as a set called `M`, a
 
 The crucial function is `g`, which validates a subset of `D` to be a valid Domain.
 
-Now, there exists a value called the `Total Coupling metric`, which is the quantity of Dependencies that cross Domains. In other words, it sums the Dependencies that connect two Domains instead of connecting Dependencies within a Domain:
+Now, there exists a value called the `Total Coupling Metric`, which is the quantity of Dependencies that cross Domains. In other words, it sums the Dependencies that connect two Domains instead of connecting Dependencies within a Domain:
 
  	let j : M -> N, where j(M) = [Summation over { m x m : m ∈ M } ] q(m1, m2), where
 
 	q: (m1, m2) -> N, where
-		q(m1, m2) = [Summation over each b in m1] {b'} U m2  if m1 != m2 else return 0.
+		q(m1, m2) = count(m1 ∩ m2).
+
+The crucial function is `q` which counts how many Dependencies crosses between Domains.
 
 
+Because there can be multiple groupings of a set of Dependencies into Domains, there will exist a set `TC`, the collection all possible Total Couplings. The generation of `TC` is an onto function of a possible `M` to the range of possible total couplings, which a subset of the natural numbers, `N`:
 
-The set of all possible Total Couplings is a 1-to-1, but not onto, function of M to the natural numbers N:
-
-	TC = { tc ∈ N :  m ∈ M and j(m) = tc }.
-
+	TC = { tc ∈ N : M exists and j(M) = tc }.
 
 
-Finding the Minimum Total Coupling gives the optimal Domain Structure. Think of the optimal Domain Structure as reducing the Dependencies between Domains. Thus, the Minimum Total Coupling is the infimum of the set of all possible Total Couplings:
+Finding the Minimum Total Coupling gives the optimal domain groupings. Formally, the Minimum Total Coupling is the infimum of the set `TC`:
 
 	Minimum Total Coupling (MTC) = inf TC.
 
 
 
-Finding the smallest change in D given an increase in B according to an order give the optimal Decoupling. Think of Decoupling as optimizing for the requirements to increase the size of B. Therefore, the optimal Decoupling is the infimum of all possible changes to D given any B':
+To add or modify the set `B` of Business Processes in the optimal way, find the change in `D` given a change in `B` that minimizes the change in the 'Minimum Total Coupling'. This is essentially equivalent to optimizing the increase of `B`, because in Software Development, most optimization is a process of adding things, (at least to start). Therefore, the optimal Decoupling Strategy is the infimum of all possible changes to `D` given any change to `B`, denoted as set `C`:
 
-	dD / dB = { dd/db_n ∈ N : k(B') = dd/db_B' }, where
+	let B' = { all possible incremental changes to B }.
 
-	k : B' -> N, and
+	C = { all possible changes in TC, given additon of b' ∈ B' to B }.
 
-	B' = { b_n : n ∈ N and b !∈ B }, therefore
-
-	Maximum Decoupling = inf dD / dB.
+	Optimal Decoupling Strategy = inf C.
 
 
-Regarding the solution of B', note that many factors affect the membership of B' such as the time frame under consideration, so the optimization of D can be highly subjective.
+In Summary, if the goal is to Decouple a system in the optimal way, find the Minimum Total Coupling. Additionally, if the goal is the optimize the coupling given a change in 'B', then find the optimal decoupling situation such that a change in 'B' causes the minimal change in `TC`.
+
+Regarding the finding of C, note that many factors affect the membership of B', so the process can be highly subjective.
 
