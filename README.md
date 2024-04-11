@@ -44,13 +44,13 @@ Because there can be multiple groupings of a set of Dependencies into Domains, t
 	TC = { tc ∈ N : M exists and j(M) = tc }.
 
 
-Finding the Minimum Total Coupling gives the optimal domain groupings. Formally, the Minimum Total Coupling is the infimum of the set `TC`:
+Finding the `Minimum Total Coupling` gives the optimal domain groupings. Formally, the `Minimum Total Coupling` is the infimum of the set `TC`:
 
 	Minimum Total Coupling (MTC) = inf TC.
 
 
 
-To add or modify the set `B` of Business Processes in the optimal way, find the change in `D` given a change in `B` that minimizes the change in the 'Minimum Total Coupling'. This is essentially equivalent to optimizing the increase of `B`, because in Software Development, most optimization is a process of adding things, (at least to start). Therefore, the optimal Decoupling Strategy is the infimum of all possible changes to `TC` given any change to `B`, denoted as set `C`:
+To add or modify the set `B` of Business Processes in the optimal way, find the change in `D` given a change in `B` that minimizes the change in the 'Total Coupling Metric'. This is essentially equivalent to optimizing the increase of `B`, because in Software Development, most optimization is a process of adding things, (at least to start). Therefore, the optimal decoupling strategy is the infimum of all possible changes to `TC` given any change to `B`, denoted as set `C`:
 
 	let B' = { all possible incremental changes to B }.
 
@@ -59,7 +59,7 @@ To add or modify the set `B` of Business Processes in the optimal way, find the 
 	Optimal Decoupling Strategy = inf C.
 
 
-In Summary, if the goal is to Decouple a system in the optimal way, find the Minimum Total Coupling. Additionally, if the goal is the optimize the coupling given a change in `B`, then find the optimal decoupling situation such that a change in `B` causes the minimal change in `TC`.
+In Summary, if the goal is to Decouple a system in the optimal way, find the `Minimum Total Coupling`. Additionally, if the goal is to optimize the coupling given a change in `B`, then find the optimal decoupling situation such that a change in `B` causes the minimal change in the `Total Coupling Metric ∈ TC`.  Note, the optimal `tc ∈ TC` may or may not be equivalent to the `MTC` in this situation.
 
 Regarding the finding of `C`, note that many factors affect the membership of `B'`, so the process can be highly subjective.
 
