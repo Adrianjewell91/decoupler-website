@@ -59,7 +59,7 @@ To add or modify the set `B` of Business Processes in the optimal way, find the 
 	Optimal Decoupling Strategy = inf C.
 
 
-In Summary, if the goal is to Decouple a system in the optimal way, find the Minimum Total Coupling. Additionally, if the goal is the optimize the coupling given a change in 'B', then find the optimal decoupling situation such that a change in 'B' causes the minimal change in `TC`.
+In Summary, if the goal is to Decouple a system in the optimal way, find the Minimum Total Coupling. Additionally, if the goal is the optimize the coupling given a change in `B`, then find the optimal decoupling situation such that a change in `B` causes the minimal change in `TC`.
 
-Regarding the finding of C, note that many factors affect the membership of B', so the process can be highly subjective.
+Regarding the finding of `C`, note that many factors affect the membership of `B'`, so the process can be highly subjective.
 
