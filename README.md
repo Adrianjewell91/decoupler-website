@@ -9,7 +9,7 @@ The begin, let there be a set B, a collection of Business Processes.
 
 
 
-Next, let there be a set D, collection of Dependencies, which express the direct relationships of Business Processes to one another. To generate it, map each Business Process to zero or more other Business Processes, defined by:
+Next, let there be a set `D`, the collection of Dependencies, which express the direct relationships of Business Processes to one another. To generate it, map each Business Process to zero or more other Business Processes, defined by:
 
 	D = { d ∈ B x B: b_1 R b_2 }. 
  
@@ -17,7 +17,7 @@ Next, let there be a set D, collection of Dependencies, which express the direct
 Note that `D ⊂ B x B` and `D ⊂ P(B)`, which is siginificant insofar as showing that D is a subset of all possible combinations of two Business procceses, and also a subset of the complete set of all possible subsets (ie. the power set of B).
 
 
-The set `D` can be grouped into a set of Domains, denoted as a set called `M`, a collection of Domains. Given a maximum Domain `size`, the set M is constructed by transforming D. Note that there can be more than one valid set of Domains, (although we will not prove it here). This transformation is described by two functions `h` and `g`, and the set `M`:
+`D` can be grouped into a set of Domains, denoted as a set called `M`, a collection of Domains. Given a maximum Domain `size`, the set M is constructed by transforming D. Note that there can be more than one valid set of Domains, (although we will not prove it here). This transformation is described by two functions `h` and `g`, and the set `M`:
 
 
 	let h : (B, D) -> M, where
