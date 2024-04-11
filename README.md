@@ -17,7 +17,7 @@ Next, let there be a set `D`, the collection of Dependencies, which express the 
 Note that `D ⊂ B x B` and `D ⊂ P(B)`, which is siginificant insofar as showing that D is a subset of all possible combinations of two Business procceses, and also a subset of the complete set of all possible subsets (ie. the power set of B).
 
 
-`D` can be grouped into a set of Domains, denoted as a set called `M`, a collection of Domains. Given a maximum Domain `size`, the set M is constructed by transforming D. Note that there can be more than one valid set of Domains, (although we will not prove it here). This transformation is described by two functions `h` and `g`, and the set `M`:
+`D` can be grouped into a set of Domains, denoted as a set called `M`, a collection of Domains. Given a maximum Domain `size`, the set `M` is constructed by transforming `D`. Note that there can be more than one valid set of Domains, (although we will not prove it here). This transformation is described by two functions `h` and `g`, and the set `M`:
 
 
 	let h : (B, D) -> M, where
@@ -29,7 +29,7 @@ Note that `D ⊂ B x B` and `D ⊂ P(B)`, which is siginificant insofar as showi
 
 The crucial function is `g`, which validates a subset of `D` to be a valid Domain.
 
-Now, there exists a value called the `Total Coupling Metric`, which is the quantity of Dependencies that cross Domains. In other words, it sums the Dependencies that connect two Domains instead of connecting Dependencies within a Domain:
+Now, there exists a value called the `Total Coupling Metric`, which is the quantity of Dependencies that cross Domains. In other words, it sums the Dependencies that connect two Domains instead of connecting Business Processes within a Domain:
 
  	let j : M -> N, where j(M) = [Summation over { m x m : m ∈ M } ] q(m1, m2), where
 
@@ -50,7 +50,7 @@ Finding the Minimum Total Coupling gives the optimal domain groupings. Formally,
 
 
 
-To add or modify the set `B` of Business Processes in the optimal way, find the change in `D` given a change in `B` that minimizes the change in the 'Minimum Total Coupling'. This is essentially equivalent to optimizing the increase of `B`, because in Software Development, most optimization is a process of adding things, (at least to start). Therefore, the optimal Decoupling Strategy is the infimum of all possible changes to `D` given any change to `B`, denoted as set `C`:
+To add or modify the set `B` of Business Processes in the optimal way, find the change in `D` given a change in `B` that minimizes the change in the 'Minimum Total Coupling'. This is essentially equivalent to optimizing the increase of `B`, because in Software Development, most optimization is a process of adding things, (at least to start). Therefore, the optimal Decoupling Strategy is the infimum of all possible changes to `TC` given any change to `B`, denoted as set `C`:
 
 	let B' = { all possible incremental changes to B }.
 
