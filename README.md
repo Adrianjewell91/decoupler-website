@@ -14,7 +14,7 @@ Next, let there be a set `D`, a collection of Dependencies, which express the di
 	D = { d ∈ B x B: b_1 R b_2 }. 
  
 
-Note that `D ⊂ B x B` and `D ⊂ P(B)`, which is siginificant insofar as showing that D is a subset of all possible combinations of two Business procceses, and also a subset of the complete set of all possible subsets (ie. the power set of B).
+Note that `D ⊂ B x B` and `D ⊂ P(B)`, which is siginificant insofar as it shows that D is a subset of all possible combinations of two Business procceses, and also a subset of the complete set of all possible subsets (ie. the power set of B).
 
 
 `D` can be grouped into a set of Domains, denoted as a set called `M`, a collection of Domains. Given a maximum Domain `size`, the set `M` is constructed by transforming `D`. Note that there can be more than one valid set of Domains, (although we will not prove it here). This transformation is described by two functions `h` and `g`, and the set `M`:
@@ -39,7 +39,7 @@ Now, there exists a value called the `Total Coupling Metric`, which is the quant
 The crucial function is `q` which counts how many Dependencies crosses between Domains.
 
 
-Because there can be multiple groupings of a set of Dependencies into Domains, there will exist a set `TC`, a collection all possible Total Couplings. The generation of `TC` is an onto function of a possible `M` to the range of possible total couplings, which a subset of the natural numbers, `N`:
+Because there can be multiple groupings of the set `D` into Domains, there will exist a set `TC`, a collection all possible Total Couplings. The generation of `TC` is an onto function of a possible `M` to the range of possible total couplings, which a subset of the natural numbers, `N`:
 
 	TC = { tc ∈ N : M exists and j(M) = tc }.
 
