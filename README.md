@@ -9,7 +9,7 @@ The begin, let there be a set B, a collection of Business Processes.
 
 
 
-Next, let there be a set `D`, the collection of Dependencies, which express the direct relationships of Business Processes to one another. To generate it, map each Business Process to zero or more other Business Processes, defined by:
+Next, let there be a set `D`, a collection of Dependencies, which express the direct relationships of Business Processes to one another. To generate it, map each Business Process to zero or more other Business Processes, defined by:
 
 	D = { d ∈ B x B: b_1 R b_2 }. 
  
@@ -39,7 +39,7 @@ Now, there exists a value called the `Total Coupling Metric`, which is the quant
 The crucial function is `q` which counts how many Dependencies crosses between Domains.
 
 
-Because there can be multiple groupings of a set of Dependencies into Domains, there will exist a set `TC`, the collection all possible Total Couplings. The generation of `TC` is an onto function of a possible `M` to the range of possible total couplings, which a subset of the natural numbers, `N`:
+Because there can be multiple groupings of a set of Dependencies into Domains, there will exist a set `TC`, a collection all possible Total Couplings. The generation of `TC` is an onto function of a possible `M` to the range of possible total couplings, which a subset of the natural numbers, `N`:
 
 	TC = { tc ∈ N : M exists and j(M) = tc }.
 
