@@ -17,15 +17,15 @@ Next, let there be a set `D`, a collection of Dependencies, which express the di
 Note that `D ⊂ B x B` and `D ⊂ P(B)`, which is siginificant insofar as it shows that D is a subset of all possible combinations of two Business procceses, and also a subset of the complete set of all possible subsets (ie. the power set of B).
 
 
-`D` can be grouped into a set of Domains, denoted as a set called `M`, a collection of Domains. Given a maximum Domain `size`, the set `M` is constructed by transforming `D`. Note that there can be more than one valid set of Domains, (although we will not prove it here). This transformation is described by two functions `h` and `g`, and the set `M`:
+`D` can be grouped into a set of Domains, denoted as a set called `M`, a collection of Domains. Given a maximum Domain `size`, the set `M` is constructed by transforming `D`. Note that there can be more than one valid set of Domains, (although we will not prove it here). This transformation is described by two functions `h` and `g`:
 
 
-	let h : (B, D) -> M, where
+	let h : D -> M, where
 
-	M = { m ∈ P(B) : U m == B and g( m ) = 1 }, and
+	M = { m ∈ P(B) : U m == B and g( m ) = 1 }.
 
-	let g : P(B) -> { 0, 1 }, and g(m) = 1 if
-		for each Domain of m ⊂ B, there is a path from every b in the Domain to every other b' in the same Domain through the inter-Domain Dependencies, only.
+	let g : (B, D) -> { 0, 1 }, and g(m) = 1 if
+		for each b ∈ m, there is a path to every other b` strictly inside of m (ie. through inter-Domain Dependencies, only).
 
 The crucial function is `g`, which validates a subset of `D` to be a valid Domain.
 
