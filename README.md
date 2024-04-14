@@ -60,7 +60,7 @@ This is good, but it is not complete, because companies are always developing th
 
 Other ways to think about this are: finding the optimal `M`, or finding the best way to change `D`. 
 
-Thus, there are two parts to the decoupling problem: finding an optimal decoupling, perhaps for the purposes of organizational efficiency, and an optimal decoupling that minimizes the increase in coupling. If the goal is to decouple a system in the optimal way, find the `Minimum Total Coupling`. Additionally, if the goal is to optimize the coupling given a change in `B`, then find `M` such that a change in `B` causes the minimal change in the `Total Coupling Metric`.  Note, the optimal `total coupling ∈ TC` may or may not be equivalent to the `Minimum Total Coupling`, although would be the best situation because it solves both aspects of the decoupling problem at the same time.
+Thus, there are two parts to the decoupling problem: finding an optimal decoupling, perhaps for the purposes of organizational efficiency, and an optimal decoupling that minimizes the increase in coupling. If the goal is to decouple a system in the optimal way, find the `Minimum Total Coupling`. Additionally, if the goal is to optimize the coupling given a change in `B`, then find `M` such that a change in `B` causes the minimal change in the `Total Coupling Metric`.  Note, the optimal `total coupling ∈ TC` may or may not be equivalent to the `Minimum Total Coupling`, but if it is, it would be the best situation because it solves both aspects of the decoupling problem at the same time.
 
 Regarding the finding of `C`, note that many factors affect the membership of `B'`, so the process can be highly subjective.
 
