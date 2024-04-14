@@ -3,7 +3,7 @@ Decoupling, Formally
 This article's goal is to demonstrate that to decouple is to minimize of the number of dependencies that connect Domains, as well as to minimize the change in this value given a change in the components of the system.
 
 
-The begin, let there be a set B, a collection of Business Processes. The exact properties of the Business Processes is intentionally vague in order to generalize the concept. The only requirement is that they be unique, because otherwise there would be no reason to decouple them. (This assumption rests on the idea that decouplable processes must be divisible, and identical process are not divisible. If identical processes are divisible, then they are ordered or enumerated in some manner that identifies them uniquely).
+The begin, let there be a set B, a collection of Business Processes. The properties of the Business Processes are intentionally vague in order to generalize the concept. The only requirement is that they be unique, because otherwise there would be no reason to decouple them. (This assumption rests on the idea that decouplable processes must be divisible, and identical process are not divisible. If identical processes are divisible, then they are ordered or enumerated in some manner that identifies them uniquely).
 
 	B = { b_1, b_2, ... b_n }.
 
