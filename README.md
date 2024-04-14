@@ -1,9 +1,9 @@
 Decoupling, Formally
 
-This article's purpose is to demonstrate that the Decoupling Problem is an optimization of a value call the Minimun Total Coupling.
+This article's goal is to demonstrate that the challenge of decoupling is minimizing of the number of dependencies that connect Domains, as well as a minimizing the change in this value given a change in the components of the system.
 
 
-The begin, let there be a set B, a collection of Business Processes.
+The begin, let there be a set B, a collection of Business Processes. The exact properties of the Business Processes is intentionally vague in order to generalize the concept. The only requirement is that they be unique, because otherwise there would be no reason to decouple them. (This assumption rests on the idea that decouplable processes must be divisible, and identical process are not divisible. If identical processes are divisible, then they are ordered or enumerated in some manner that identifies them uniquely).
 
 	B = { b_1, b_2, ... b_n }.
 
@@ -50,16 +50,17 @@ Finding the `Minimum Total Coupling` gives the optimal domain groupings. Formall
 
 
 
-To add or modify the set `B` of Business Processes in the optimal way, find the change in `D` given a change in `B` that minimizes the change in the 'Total Coupling Metric'. This is essentially equivalent to optimizing the increase of `B`, because in Software Development, most optimization is a process of adding things, (at least to start). Therefore, the optimal decoupling strategy is the infimum of all possible changes to `TC` given any change to `B`, denoted as set `C`:
+To optimally modify the set `B` of Business Processes, find the minimum change in the 'Total Coupling' given a change in `B`. This is equivalent to optimizing the increase of `B`, because in software development, optimization is generally a process of adding things. Therefore, the optimal decoupling strategy is the infimum of a set `C`, a collection of all possible changes to `TC` given any change to set `B`:
 
 	let B' = { all possible incremental changes to B }.
 
-	C = { all possible changes in TC, given additon of b' ∈ B' to B }.
+	C = { all possible changes to TC, given additon of b' ∈ B' to B }.
 
 	Optimal Decoupling Strategy = inf C.
 
+Other ways to think about this are: finding the optimal `M`, or finding the best way to change `D`. 
 
-In Summary, if the goal is to Decouple a system in the optimal way, find the `Minimum Total Coupling`. Additionally, if the goal is to optimize the coupling given a change in `B`, then find the optimal decoupling situation such that a change in `B` causes the minimal change in the `Total Coupling Metric ∈ TC`.  Note, the optimal `tc ∈ TC` may or may not be equivalent to the `MTC` in this situation.
+To summarize, if the goal is to decouple a system in the optimal way, find the `Minimum Total Coupling`. Additionally, if the goal is to optimize the coupling given a change in `B`, then find `M` such that a change in `B` causes the minimal change in the `Total Coupling Metric`.  Note, the optimal `total coupling ∈ TC` may or may not be equivalent to the `Minimum Total Coupling`, although would be the best situation because it solves both aspects of the decoupling problem.
 
 Regarding the finding of `C`, note that many factors affect the membership of `B'`, so the process can be highly subjective.
 
