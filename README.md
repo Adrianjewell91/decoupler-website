@@ -51,7 +51,7 @@ Therefore, the `Minimum Total Coupling` is mapped to by the optimal `M`. Formall
 
 Thus finding the `Minimum Total Coupling` yields an optimally decoupled system. 
 
-This is good, but it is not complete, because companies are always developing their members of `B`. Therefore, to optimally modify the set `B` of Business Processes, find the minimum change in the 'Total Coupling' given a change in `B`. This is equivalent to optimizing the increase of `B`, because in software development, it is basically the process of adding things. Therefore, the optimal decoupling strategy is the infimum of a set `C`, a collection of all possible changes to `TC` given any change to set `B`:
+This is good, but incomplete because companies are constantly changing the constitution of `B`. Therefore, to optimally modify the set `B` of Business Processes, find the minimum change in the 'Total Coupling' given a change in `B`. This is equivalent to optimizing the increase of `B`, because in software development, it is basically the process of adding things. Therefore, the optimal decoupling strategy is the infimum of a set `C`, a collection of all possible changes to `TC` given any change to set `B`:
 
 	let B' = { all possible incremental changes to B }.
 
