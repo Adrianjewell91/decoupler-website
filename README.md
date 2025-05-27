@@ -15,7 +15,7 @@ Next, define set `D` as a collection of Dependencies, which are the direct relat
 	D = { d ∈ B x B: b_1 R b_2 }. 
  
 
-Note that `D` is (sort of) a subset of the Cartesian Product, aka. `D ⊂ B x B`,  which is siginificant insofar as it shows that `D` is a subset of all possible combinations of two Business procceses. It is also a directed relationship, in order to model real world dependencies. So {B_1, B_2} is unique from {B_2, B_1}.
+Note that `D` is (sort of) a subset of the Cartesian Product, aka. `D ⊂ B x B`,  which is siginificant insofar as it shows that `D` is a subset of all possible combinations of two Business procceses. 
 
 
 Using `D` and `B`, define set `M` as a collection of Domains. To construct M given a maximum size `s`, group the members of `B` into a collection of sets of max size `s` whose union is `B` and intersection is an empty set. Note that there can be more than one valid set of Domains. This transformation is described by two functions `h` and `g`:
