@@ -1,6 +1,6 @@
-Decoupling, Formally
+A formal definition of the word: decouple.
 
-This article's goal is to demonstrate that to decouple is to minimize of the number of dependencies that connect Domains, as well as to minimize the change in this value given a change in the components of the system.
+The goal of this article is to provide a formal definition of the word "decouple". That is, it refers to the minimization of the number of dependencies that connect business domains, as well as to the minimization of the increase in this number, given a change to the components of the system.
 
 Use case: https://adrianjewell91.github.io/decoupler-website/
 
