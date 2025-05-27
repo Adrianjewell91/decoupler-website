@@ -1,4 +1,4 @@
-A formal definition of the word: decouple.
+A formal definition of Decoupling.
 
 The goal of this article is to provide a formal definition of the word "decouple". That is, it refers to the minimization of the number of dependencies that connect business domains, as well as to the minimization of the increase in this number, given a change to the components of the system.
 
