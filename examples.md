@@ -5,9 +5,9 @@ https://adrianjewell91.github.io/decoupler-website/.
 
 ### Premise
 
-A SQL query was performing badly inside a GraphQL component but performing well using the SQL console. The challenge was to root cause and solve the problem, which was non-trivial because debugging was not yielding insight. 
+A complex SQL query performed badly inside a GraphQL system but performed well using the SQL console. The challenge was to align the performance and get it query to perform well in GQL, which was non-trivial because debugging logs did not yield insight. 
 
-The solution was to rewrite the query to be more DRY. In retrospect the query could obviously have been refactored, but this was not apparent at first glance because of the way that the problem presented itself.
+The solution was not hard but finding the solution was indeed hard. However this was not immediately apparent because the focus was in the wrong place. Once the focus was right, the insight was easy, which was that the query was not DRY and therefore could be rewritten. In retrospect, the query could obviously have been refactored, but this was not apparent at first glance.
 
 ### Explanation
 Initially, the problem looked like this:
@@ -20,4 +20,4 @@ But in reality, the problem really looked like this:
 
 Therefore the problem solving strategy was to converge on the optimal decoupling of `B` by understanding the true nature of the business processes. For the example, initially it looked as if the systems were identical except for the SQL, but that turned out to be false. For example, upon further investigation, the GQL component contained many additional dependencies, which divided it from the Azure components. This knowledge reworked the domain boundaries. 
 
-The domain reworking reduced the total coupling from `4` to `2`. Mentally, this allowed the engineer to focus on the main problem, which was the SQL instead of wondering about why the SQL should have performed differently on two seemingly identialy configurations. 
+The domain reworking reduced the total coupling from `4` to `2`. Mentally, this allowed the engineer to focus on the main problem, which was the SQL instead of wondering about why the SQL should have performed differently on two seemingly identical configurations. 
