@@ -1,4 +1,30 @@
-A formal definition of Decoupling.
+A formal definition of Decoupling:
+
+Let $\( B \)$, $\( D \)$, and $\( M \)$ be sets such that:
+
+\[
+B = $\{1, 2, 3, \ldots, n\}$
+\]
+
+\[
+D $\subseteq B \times B$
+\]
+
+\[
+M $\subseteq \mathcal{P}(B)$
+\]
+
+Where:
+- \( B \) is a set labeled from 1 to \( n \),
+- \( D \) is a subset of the Cartesian product \( B $\times$ B \),
+- \( M \) is a subset of the power set of \( B \), denoted \( $\mathcal{P}(B)$ \).
+
+---
+Example. Given max Domain size = 3: 
+![img](https://github.com/Adrianjewell91/decoupler-website/blob/main/Screenshot%202024-02-10%20at%2010.01.19%20AM.png)
+
+
+
 
 The goal of this article is to formally define of the word "decouple". In essence, it is the optimization of dependencies between business domains. This optimization can have two parts. One part is the minimization of the number of dependencies that connect business domains, and the other part is the minimization of the increase in this number, given a change to the components of the system.
 
@@ -66,7 +92,3 @@ In conclusion, decoupling considers the present and the future, but they need no
 Note, the optimal `total coupling ∈ TC` may or may not be equivalent to the `Minimum Total Coupling`, but if it is, it would be the best situation because it solves both aspects of the decoupling problem at the same time.
 
 Regarding the finding of `C`, note that many factors affect the membership of `B'`, so the process can be highly subjective.
-
-
-Example. Given max Domain size = 3: 
-![img](https://github.com/Adrianjewell91/decoupler-website/blob/main/Screenshot%202024-02-10%20at%2010.01.19%20AM.png)
