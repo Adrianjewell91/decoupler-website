@@ -58,9 +58,11 @@ In this way, the system went from highly coupled (total coupling of 3) to not co
 
 ## A Less Simple Example #3
 
-A legacy data synchronization pipeline dependedly heavily on shared models and infrastructure, and also used resource intensive batch queries, leading to common failures. This in indicated by the heavy red lines, which represent the multitude of dependencies on other jobs that use the same model.
+A legacy data synchronization pipeline failed often due to depending heavily on shared models / infrastructure, and using resource-intensive batch queries. This in indicated by the heavy red lines, which represent the multitude of dependencies on other jobs that use the same models.
 
-The solution was to rewrite the job as an service orchestrator, leveraging new domain interfaces and event streams, reducing the coupling on shared infra, and creating new dependencies on single-point-of-entry into the required domains.
+The solution was to rewrite the job as a service orchestrator, leveraging new domain interfaces and event streams, reducing the coupling on shared infra, and creating new dependencies on single-point-of-entry into the required domains.
+
+New dependencies were created but because they were the single point of entry, the total coupling decreased but the single shared model was a dependency that was orders of magnitude greater than the new domain interfaces.
 
 ![image](https://github.com/user-attachments/assets/514900dc-9bac-46b6-9323-4704e009f498)
 
