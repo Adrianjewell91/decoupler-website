@@ -30,8 +30,8 @@ That is, minimize the Total Coupling to reduce inter-domain dependencies and ach
 
 
 ---
-Example. Given $`s`$ = 3: 
-![img](https://github.com/Adrianjewell91/decoupler-website/blob/main/Screenshot%202024-02-10%20at%2010.01.19%20AM.png)
+Examples: 
+https://github.com/Adrianjewell91/decoupler-website/blob/main/examples.md
 
 
 **Notes**:
