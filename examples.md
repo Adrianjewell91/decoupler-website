@@ -1,7 +1,13 @@
-# Enterprise Decoupling
+## Visual
+Example. Given $`s`$ = 3: 
+![img](https://github.com/Adrianjewell91/decoupler-website/blob/main/Screenshot%202024-02-10%20at%2010.01.19%20AM.png)
+
+
+## Organizational
+This article attempts to apply the framework to a theoretical large organization that needs to rearchitect its domain boundaries at scale. It also discusses the operational challenges of such a task. 
 https://adrianjewell91.github.io/decoupler-website/.
 
-# Simple Example: 
+## A Simple Example #1
 
 ### Premise
 
@@ -21,3 +27,7 @@ But in reality, the problem really looked like this:
 Therefore the problem solving strategy was to converge on the optimal decoupling of `B` by understanding the true nature of the business processes. For the example, initially it looked as if the systems were identical except for the SQL, but that turned out to be false. For example, upon further investigation, the GQL component contained many additional dependencies, which divided it from the Azure components. This knowledge reworked the domain boundaries. 
 
 The domain reworking reduced the total coupling from `4` to `2`. Mentally, this allowed the engineer to focus on the main problem, which was the SQL instead of wondering about why the SQL should have performed differently on two seemingly identical configurations. 
+
+## A Simpler Example #2
+
+## A Simpler Example #3
