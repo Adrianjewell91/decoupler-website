@@ -1,3 +1,15 @@
+## Mathematical
+
+When $`D = B \times B`$, and only two domains are required, then the minimum total coupling can be calculated according to the size of $`|B|`$. 
+
+Let:
+
+- $`n = |B|`$.
+
+Then: 
+
+$$\text{min Total Coupling} = \dfrac{n+1}{2} * \(n - \dfrac{n+1}{2}\) $$, (using integer arithemtic).
+
 ## Visual
 Example. Given $`s`$ = 3: 
 ![img](https://github.com/Adrianjewell91/decoupler-website/blob/main/Screenshot%202024-02-10%20at%2010.01.19%20AM.png)
@@ -29,5 +41,7 @@ Therefore the problem solving strategy was to converge on the optimal decoupling
 The domain reworking reduced the total coupling from `4` to `2`. Mentally, this allowed the engineer to focus on the main problem, which was the SQL instead of wondering about why the SQL should have performed differently on two seemingly identical configurations. 
 
 ## A Simpler Example #2
+
+
 
 ## A Simpler Example #3
