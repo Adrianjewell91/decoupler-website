@@ -12,7 +12,7 @@ $$\text{min Total Coupling} = \dfrac{n+1}{2} * \(n - \dfrac{n+1}{2}\) $$, (using
 
 Example:
 
-![image](https://github.com/user-attachments/assets/de02b511-3b73-4d4a-9f27-c0a2d9f99e3c)
+<img src="https://github.com/user-attachments/assets/de02b511-3b73-4d4a-9f27-c0a2d9f99e3c" width="250" height="700">
 
 
 ## Visual
