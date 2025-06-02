@@ -29,8 +29,8 @@ That is, minimize the Total Coupling to reduce inter-domain dependencies and ach
 
 
 
----
-Examples: 
+
+**Examples**:
 https://github.com/Adrianjewell91/decoupler-website/blob/main/examples.md
 
 
@@ -39,7 +39,7 @@ https://github.com/Adrianjewell91/decoupler-website/blob/main/examples.md
 The goal of this system is to define of the meaning of being "decoupled". The motivation was the observation that "decoupled" was a highly subjective term in business discussions. The hope is that this definition is useful, despite being highly abstract. A number of examples will attempt to apply the framework.
 
 
-In short, decoupling is the optimization of dependencies between business domains. This optimization can have two parts. The first part is the minimization of the number of dependencies that connect business domains, and the second part is the minimization of the increase in this number given a change to the components of the system.
+In short, decoupling is an optimization in two parts. The first part is the minimization of the number of dependencies that connect business domains, and the second part is the minimization of the increase in this number given a change to the components of the system.
 
 
 Define set `B` as a collection of business processes. The properties of the Business Processes are intentionally vague for the purpose of generalization. The only requirement is that each Business Process be unique, because otherwise there would be no reason to decouple them. This assumption rests on the idea that decouplable processes must be divisible, and identical process are not divisible. If identical processes are divisible, then they are ordered or enumerated in some manner that identifies them uniquely.
