@@ -1,89 +1,70 @@
-A formal definition of Decoupling:
+Let:
 
-Let $\( B \)$, $\( D \)$, and $\( M \)$ be sets such that:
+- $`B = \{b_1, b_2, \dots, b_n\}`$ be the set of business processes.
+- $`D \subseteq B \times B`$ be the set of dependencies between business processes.
+- $`C \subseteq D`$ be the set of **intra-domain** dependencies.
+- $`s \in \mathbb{N}`$, the max domain size.
 
-\[
-B = $\{1, 2, 3, \ldots, n\}$
-\]
+Let:
 
-\[
-D $\subseteq B \times B$
-\]
+- $`f: (s, D) \to C`$ be a mapping that identifies which dependencies are inter-domain.
+- $`M \subseteq \mathcal{P}(B)`$ be a set of subsets of $`B`$, representing domain groupings. The existence of this set is implied by $`f`$.
 
-\[
-M $\subseteq \mathcal{P}(B)$
-\]
+**Requirements**:
+- For each domain $` m \in M `$, all business processes within $` m `$ must be reachable **only through intra-domain dependencies**, i.e., no dependency path between two processes in $` m `$ may traverse any process outside $` m `$. All such paths must exclusively use dependencies in $` D \setminus C `$.
+- $`\cap M = \{ \}`$, representing that each domain must be unique in its membership.
 
-Where:
-- \( B \) is a set labeled from 1 to \( n \),
-- \( D \) is a subset of the Cartesian product \( B $\times$ B \),
-- \( M \) is a subset of the power set of \( B \), denoted \( $\mathcal{P}(B)$ \).
+
+**Total Coupling**:
+$`
+\text{Total Coupling} = |C|
+`$
+
+**Goal**:
+$`
+\min |C|
+`$
+
+That is, minimize the Total Coupling to reduce inter-domain dependencies and achieve better modularity across business domains.
+
+
 
 ---
-Example. Given max Domain size = 3: 
+Example. Given $`s`$ = 3: 
 ![img](https://github.com/Adrianjewell91/decoupler-website/blob/main/Screenshot%202024-02-10%20at%2010.01.19%20AM.png)
 
 
+**Notes**:
+
+The goal of this system is to define of the meaning of being "decoupled". The motivation was the observation that "decoupled" was a highly subjective term in business discussions. The hope is that this definition is useful, despite being highly abstract. A number of examples will attempt to apply the framework.
 
 
-The goal of this article is to formally define of the word "decouple". In essence, it is the optimization of dependencies between business domains. This optimization can have two parts. One part is the minimization of the number of dependencies that connect business domains, and the other part is the minimization of the increase in this number, given a change to the components of the system.
+In short, decoupling is the optimization of dependencies between business domains. This optimization can have two parts. The first part is the minimization of the number of dependencies that connect business domains, and the second part is the minimization of the increase in this number given a change to the components of the system.
 
 
-Define set `B` as a collection of Business Processes. The properties of the Business Processes are intentionally vague for the purpose of generalization. The only requirement is that each Business Process be unique, because otherwise there would be no reason to decouple them. This assumption rests on the idea that decouplable processes must be divisible, and identical process are not divisible. If identical processes are divisible, then they are ordered or enumerated in some manner that identifies them uniquely.
-
-	B = { b_1, b_2, ... b_n }.
+Define set `B` as a collection of business processes. The properties of the Business Processes are intentionally vague for the purpose of generalization. The only requirement is that each Business Process be unique, because otherwise there would be no reason to decouple them. This assumption rests on the idea that decouplable processes must be divisible, and identical process are not divisible. If identical processes are divisible, then they are ordered or enumerated in some manner that identifies them uniquely.
 
 
-
-Next, define set `D` as a collection of Dependencies, which are the direct relationships of Business Processes to one another. To generate it, map each Business Process to zero or more other Business Processes, defined by:
-
-	D = { d ∈ B x B: b_1 R b_2 }. 
- 
-
-Note that `D` is (sort of) a subset of the Cartesian Product, aka. `D ⊂ B x B`,  which is siginificant insofar as it shows that `D` is a subset of all possible combinations of two Business procceses. 
+Next, define set `D` as a collection of dependencies, which are the direct relationships of business processes to one another. To generate it, map each business process to zero or more other business processes.
 
 
-Using `D` and `B`, define set `M` as a collection of Domains. To construct M given a maximum size `s`, group the members of `B` into a collection of sets of max size `s` whose union is `B` and intersection is an empty set. Note that there can be more than one valid set of Domains. This transformation is described by two functions `h` and `g`:
+Note that `D` is a subset of the Cartesian Product, aka. `D ⊂ B x B`,  which is siginificant insofar as it shows that `D` is a subset of all possible combinations of two business procceses. 
 
 
-	let h : D -> M, where
+Using `D` and `B`, define set `M` as a collection of domains. To construct M given a maximum size `s`, group the members of `B` into a collection of max size `s` whose union is `B` and intersection is an empty set. Note that there can be more than one valid set of domains. 
 
-	M = { m ∈ P(B) : U m == B and g( m ) = true }.
-
-	let g : (B, D) -> { 0, 1 }, and g(m) = true if
-		for each member of set b ∈ m, there is a path to every other member in b using only dependencies in D.
-
-Which is to say, for each process in a Domain, there should be a dependency-path from each process to every other member in the same domain without having to leave the boundary of the domain. This definition is based opon the intuition that domain processes are connected in more ways than they connected to processes outside of the Domain.
-
-The crucial function is `g`, which essentially is validating a subset of `D` to be a valid Domain.
-
-Based on `M`, there exists the `Total Coupling Metric`, which is the quantity of Dependencies that cross Domains. That is, it is the sum of the Dependencies that connect two Domains, instead of connecting Business Processes within a Domain:
-
- 	let j : M -> N, where j(M) = [Summation over { m x m : m ∈ M } ] q(m1, m2), where
-
-	q: (m1, m2) -> N, where q(m1, m2) = count(dependencies in `D` that connect m1 and m2).
-
-The crucial function is `q` which counts how many Dependencies crosses between Domains.
-
-Because there can be multiple valid mappings of the set `D` to an `M`, there exists a set `TC`, a collection all possible Total Coupling Metrics. The calculation of `TC` is an onto (but not necessarily 1-1) function of possible configurations of `M` to the range of possible total couplings, which is a subset of the natural numbers, `N`:
-
-	TC = { tc ∈ N : M exists and j(M) = tc }.
+This is to say, for each process in a domain, there should be a path from each member to every other member in the same domain without having to leave the boundary of the domain. This definition is based opon the intuition that domain processes are connected in more ways than they connected to processes outside of the domain.
 
 
-Therefore, the `Minimum Total Coupling` is found in the optimal `M`. Formally, the `Minimum Total Coupling` is the infimum of the set `TC`:
+Based on `M`, there exists the `Total Coupling`, which is the quantity of dependencies that connect domains. That is, it is the sum of the dependencies that connect two domains, instead of connecting business processes within a domain:
 
-	Minimum Total Coupling (MTC) = inf TC.
+Because there are potentially multiple mappings of `D` to `M`, there exists a set `T` of all possible Total Couplings. The calculation of `T` is an onto (but not necessarily 1-1) function of possible `M` to the natural numbers.
 
+Therefore, the `Minimum Total Coupling` is found in the optimal `M`. Formally, the `Minimum Total Coupling` is the infimum of the set `T`.
 
 Thus, finding the `Minimum Total Coupling` yields an optimally decoupled system. 
 
-However, business evolve, and therefore also evolving is the membership of `B`. Therefore, to remain decoupled is to find the minimum change in the 'Total Coupling' given a change in `B`. In software development, where any change is essentially an addition, this is equivalent to optimizing the increase of in the membership of `B`. Therefore, the optimal decoupling strategy is the infimum of a set `C`, a collection of all possible changes to `TC` given any change to set `B`:
-
-	let B' = { all possible incremental changes to B }.
-
-	C = { all possible changes to TC, given additon of b' ∈ B' to B }.
-
-	Optimal Decoupling Strategy = inf C.
+However, business evolve, and therefore the constitution of `B` evolves. Therefore, to remain decoupled is to find the minimum change in the 'Total Coupling' given a change in `B`. In software development, where any change is essentially an addition, this is equivalent to optimizing the increase of in the membership of `B`. Therefore, the optimal decoupling strategy is the infimum of a set `C`, a collection of all possible changes to `TC` given any change to set `B`:
 
 Other ways to think about this are: finding the optimal `M`, or finding the best way to change `D`. 
 
