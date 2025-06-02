@@ -10,6 +10,11 @@ Then:
 
 $$\text{min Total Coupling} = \dfrac{n+1}{2} * \(n - \dfrac{n+1}{2}\) $$, (using integer arithemtic).
 
+Example:
+
+![image](https://github.com/user-attachments/assets/de02b511-3b73-4d4a-9f27-c0a2d9f99e3c)
+
+
 ## Visual
 Example. Given $`s`$ = 3: 
 ![img](https://github.com/Adrianjewell91/decoupler-website/blob/main/Screenshot%202024-02-10%20at%2010.01.19%20AM.png)
