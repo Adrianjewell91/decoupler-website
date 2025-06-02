@@ -62,7 +62,7 @@ A legacy data synchronization pipeline failed often due to depending heavily on 
 
 The solution was to rewrite the job as a service orchestrator, leveraging new domain interfaces and event streams, reducing the coupling on shared infra, and creating new dependencies on single-point-of-entry into the required domains.
 
-New dependencies were created but because they were the single point of entry, the total coupling decreased but the single shared model was a dependency that was orders of magnitude greater than the new domain interfaces.
+New dependencies were created but because they were the single point of entry, the total coupling decreased. This is because the legacy shared model was a dependency that was orders of magnitude greater than the new domain interfaces.
 
 ![image](https://github.com/user-attachments/assets/514900dc-9bac-46b6-9323-4704e009f498)
 
