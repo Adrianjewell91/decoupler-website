@@ -2,7 +2,7 @@ Let:
 
 - $`B = \{b_1, b_2, \dots, b_n\}`$ be the set of business processes.
 - $`D \subseteq B \times B`$ be the set of dependencies between business processes.
-- $`C \subseteq D`$ be the set of **intra-domain** dependencies.
+- $`C \subseteq D`$ be the set of **inter-domain** dependencies.
 - $`s \in \mathbb{N}`$, the max domain size.
 
 Let:
