@@ -40,8 +40,15 @@ Therefore the problem solving strategy was to converge on the optimal decoupling
 
 The domain reworking reduced the total coupling from `4` to `2`. Mentally, this allowed the engineer to focus on the main problem, which was the SQL instead of wondering about why the SQL should have performed differently on two seemingly identical configurations. 
 
-## A Simpler Example #2
+## A Less Simple Example #2
+
+In a data aggregation pipeline, there were data consistency issues. This was caused by an old library causing memory leaks, which caused the consumers to slow to a halt. The initial problem was that the pipeline was hard to reason about because of the number of consumers and sources.
+
+The solution was the refactor into the 4 constituent consumers then debug the highest traffic. Once the library was removed, it was easy to apply the pattern to the remaining consumers.
+
+In this way, the system went from highly coupled (total coupling of 3) to not coupled anymore (total coupling of 0).
+
+![image](https://github.com/user-attachments/assets/ff315a56-b881-459d-b3d5-832a918b75aa)
 
 
-
-## A Simpler Example #3
+## A Less Simple Example #3
