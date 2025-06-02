@@ -65,7 +65,7 @@ Based on `M`, there exists the `Total Coupling Metric`, which is the quantity of
 
 The crucial function is `q` which counts how many Dependencies crosses between Domains.
 
-Because there can be multiple valid mappings of the set `D` to an `M`, there exists a set `TC`, a collection all possible Total Coupling Metrics. The generation of `TC` is an onto (but not necessarily 1-1) function of possible configurations of `M` to the range of possible total couplings, which is a subset of the natural numbers, `N`:
+Because there can be multiple valid mappings of the set `D` to an `M`, there exists a set `TC`, a collection all possible Total Coupling Metrics. The calculation of `TC` is an onto (but not necessarily 1-1) function of possible configurations of `M` to the range of possible total couplings, which is a subset of the natural numbers, `N`:
 
 	TC = { tc ∈ N : M exists and j(M) = tc }.
 
