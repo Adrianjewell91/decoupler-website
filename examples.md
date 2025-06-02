@@ -62,4 +62,5 @@ A legacy data synchronization pipeline dependedly heavily on shared models and i
 
 The solution was to rewrite the job as an service orchestrator, leveraging new domain interfaces and event streams, reducing the coupling on shared infra, and creating new dependencies on single-point-of-entry into the required domains.
 
-![image](https://github.com/user-attachments/assets/87209904-cbab-4759-a09a-4b53b0c7be7b)
+![image](https://github.com/user-attachments/assets/514900dc-9bac-46b6-9323-4704e009f498)
+
