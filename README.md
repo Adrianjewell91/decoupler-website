@@ -1,3 +1,5 @@
+Decoupling: a (graph) vertex-coloring process:
+
 Let:
 
 - $`B = \{b_1, b_2, \dots, b_n\}`$ be the set of business processes.
