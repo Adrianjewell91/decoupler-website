@@ -1,8 +1,8 @@
-## Organizational
+## Graph Theory
 
-https://adrianjewell91.github.io/decoupler-website/
+One algorithm is optimization of Modularity, which is determined by a ratio of edges within communities over the edges that would be within the community if edges were distributed at random.  See: https://pmc.ncbi.nlm.nih.gov/articles/PMC1482622/#sec1. 
 
-## Mathematical
+## Densely Connected Graphs
 
 When $`D = B \times B`$, and only two domains are required, then the minimum total coupling can be calculated according to the size of $`|B|`$. 
 
