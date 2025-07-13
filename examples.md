@@ -1,6 +1,15 @@
-## Graph Theory
+## Developer Velocity
 
-One algorithm is optimization of Modularity, which is determined by a ratio of edges within communities over the edges that would be within the community if edges were distributed at random.  See: https://pmc.ncbi.nlm.nih.gov/articles/PMC1482622/#sec1. 
+One problem in Developer Velocity is the need to spend a lot of time writing and testing code because there are too many dependencies that might break when adding a new feature or a fixing a bug. At this point, the developer must decide on a course of action: whether to take the risk and not test, whether to write the tests, whether to refactor, or try to avoid the dependencies all together and write duplicate/new code, among other options. 
+
+The below figures shows a graph of dependencies and three possible routes to integrate new dependencies. In the first example, dependencies are accessed individually without any regard for the other dependencies. In the second example, some judiciousness is taking to group dependencies into fewer interfaces, and lastly, the other extreme is taken where a single new interface is built that captures completely all the dependencies.
+
+<img width="997" height="4011" alt="image" src="https://github.com/user-attachments/assets/0d5ae631-11bc-4af1-84dc-1ac7a6bdf5bf" />
+
+
+## Modularity - Graph Theory
+
+One algorithm is Modularity optimization, which Modularity is the ratio of edges within communities over the edges that would be within the community if edges were distributed at random.  See: https://pmc.ncbi.nlm.nih.gov/articles/PMC1482622/#sec1. 
 
 ## Densely Connected Graphs
 
@@ -19,7 +28,7 @@ Example:
 <img src="https://github.com/user-attachments/assets/de02b511-3b73-4d4a-9f27-c0a2d9f99e3c" width="250" height="700">
 
 
-## Visual
+## A Simple Visual
 Example. Given $`s`$ = 3: 
 ![img](https://github.com/Adrianjewell91/decoupler-website/blob/main/Screenshot%202024-02-10%20at%2010.01.19%20AM.png)
 
