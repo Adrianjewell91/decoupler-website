@@ -4,6 +4,8 @@ One problem in Developer Velocity is the need to spend a lot of time writing and
 
 The below figures shows a graph of dependencies and three possible routes to integrate new dependencies. In the first example, dependencies are accessed individually without any regard for the other dependencies. In the second example, some judiciousness is taking to group dependencies into fewer interfaces, and lastly, the other extreme is taken where a single new interface is built that captures completely all the dependencies.
 
+When would one strategy be preferrable over another? That is a complicated question. For example, if the domain teams know the best way to expose their dependencies then it might be easy to go with option 2. However, if that information is not known then option 1 or 3 might be better. Option 1 might be better if there will be a natural emergence of new domains with the new interfaces. Option 3 might be better if the system is siloable and won't be depended upon in the future. 
+
 <img width="997" height="4011" alt="image" src="https://github.com/user-attachments/assets/0d5ae631-11bc-4af1-84dc-1ac7a6bdf5bf" />
 
 
