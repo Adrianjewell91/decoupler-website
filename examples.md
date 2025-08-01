@@ -1,3 +1,43 @@
+## Using Node2Vec
+
+### Given a log of SQL queries against a database: 
+
+1. Build a graph of relationship between clients and tables. 
+2. Embedding the graph using node2vec.
+3. Visualize the embeddings and known labels.
+	- Client or Table.
+	- Inside or Outside the largest connected component.
+
+
+### Notes:
+
+- There are two graph-building flows:
+	- JOINs connect Clients to Tables.
+	- FROMS connect Clients to Tables, and JOINS connect Tables to Tables.
+	
+	
+- The known labels are build from observations of graph, which are:
+	- That there is one large connected component and many tiny ones.
+	- That there many unique clients (where a client == a unique sql hash).
+
+
+
+### Input:
+A csv of sql_hashes and queries, taken from solrwind db analyzer. Roughly 18K queries (before deduplication).
+
+### Results:
+
+Graph (using cosmograph):
+
+<img width="1310" height="682" alt="Screenshot 2025-08-01 at 12 24 55 PM" src="https://github.com/user-attachments/assets/a5883772-1a43-4365-9c9c-f94aefb07e0c" />
+
+Visualizations:
+
+<img width="932" height="800" alt="Screenshot 2025-08-01 at 12 25 11 PM" src="https://github.com/user-attachments/assets/2d7c13b5-c4d6-4b40-b2cb-0aaeffea26c4" />
+
+<img width="946" height="796" alt="Screenshot 2025-08-01 at 12 25 25 PM" src="https://github.com/user-attachments/assets/24760ef5-feb9-41aa-b520-00fc93ba211b" />
+
+
 ## Developer Velocity
 
 One problem in Developer Velocity is the need to spend a lot of time writing and testing code because there are too many dependencies that might break when adding a new feature or a fixing a bug. At this point, the developer must decide on a course of action: whether to take the risk and not test, whether to write the tests, whether to refactor, or try to avoid the dependencies all together and write duplicate/new code, among other options. 
