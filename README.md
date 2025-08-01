@@ -1,4 +1,4 @@
-Decoupling: a (graph) vertex-coloring process:
+# Decoupling: a community detection and graph-updating process:
 
 Let:
 
@@ -36,7 +36,7 @@ That is, minimize the Total Coupling to reduce inter-domain dependencies and ach
 https://github.com/Adrianjewell91/decoupler-website/blob/main/examples.md
 
 
-**Notes**:
+# Supplemental Notes:
 
 The goal of this system is to define of the meaning of being "decoupled". The motivation was the observation that "decoupled" was a highly subjective term in business discussions. The hope is that this definition is useful, despite being highly abstract. A number of examples will attempt to apply the framework.
 
