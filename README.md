@@ -32,7 +32,7 @@ That is, minimize the Total Coupling to reduce inter-domain dependencies and ach
 
 
 
-**Examples**:
+# Examples:
 https://github.com/Adrianjewell91/decoupler-website/blob/main/examples.md
 
 
