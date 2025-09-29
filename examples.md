@@ -1,53 +1,6 @@
 ## Using Node2Vec
 
-### Given a log of SQL queries against a database: 
-
-1. Build a graph of relationship between clients and tables. 
-2. Embedding the graph using node2vec.
-3. Visualize the embeddings and known labels.
-	- Client or Table.
-	- Inside or Outside the largest connected component.
-
-
-### Notes:
-
-- There are two graph-building flows:
-	- JOINs connect Clients to Tables.
-	- FROMS connect Clients to Tables, and JOINS connect Tables to Tables.
-	
-	
-- The known labels are build from observations of graph, which are:
-	- That there is one large connected component and many tiny ones.
-	- That there many unique clients (where a client == a unique sql hash).
-
-
-
-### Input:
-A csv of sql_hashes and queries, taken from solrwind db analyzer. Roughly 18K queries (before deduplication).
-
-### Results:
-
-Graph (using cosmograph):
-
-<img width="1310" height="682" alt="Screenshot 2025-08-01 at 12 24 55 PM" src="https://github.com/user-attachments/assets/a5883772-1a43-4365-9c9c-f94aefb07e0c" />
-
-Visualizations:
-
-<img width="932" height="800" alt="Screenshot 2025-08-01 at 12 25 11 PM" src="https://github.com/user-attachments/assets/2d7c13b5-c4d6-4b40-b2cb-0aaeffea26c4" />
-
-<img width="946" height="796" alt="Screenshot 2025-08-01 at 12 25 25 PM" src="https://github.com/user-attachments/assets/24760ef5-feb9-41aa-b520-00fc93ba211b" />
-
-
-## Developer Velocity
-
-One problem in Developer Velocity is the need to spend a lot of time writing and testing code because there are too many dependencies that might break when adding a new feature or a fixing a bug. At this point, the developer must decide on a course of action: whether to take the risk and not test, whether to write the tests, whether to refactor, or try to avoid the dependencies all together and write duplicate/new code, among other options. 
-
-The below figures shows a graph of dependencies and three possible routes to integrate new dependencies. In the first example, dependencies are accessed individually without any regard for the other dependencies. In the second example, some judiciousness is taking to group dependencies into fewer interfaces, and lastly, the other extreme is taken where a single new interface is built that captures completely all the dependencies.
-
-When would one strategy be preferrable over another? That is a complicated question. For example, if the domain teams know the best way to expose their dependencies then it might be easy to go with option 2. However, if that information is not known then option 1 or 3 might be better. Option 1 might be better if there will be a natural emergence of new domains with the new interfaces. Option 3 might be better if the system is siloable and won't be depended upon in the future. 
-
-<img width="997" height="4011" alt="image" src="https://github.com/user-attachments/assets/0d5ae631-11bc-4af1-84dc-1ac7a6bdf5bf" />
-
+https://github.com/Adrianjewell91/graph-builder/tree/main 
 
 ## Modularity - Graph Theory
 
