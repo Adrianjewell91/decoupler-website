@@ -1,4 +1,4 @@
-# Decoupling: a community detection and graph-updating process:
+# Decoupling: a community detection algorithm and criteria for evolving systems:
 
 Let:
 
